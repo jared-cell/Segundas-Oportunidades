@@ -356,6 +356,8 @@ app.get('/infoReportes', requireLogin, (req, res) => {
   res.render('InfoReportes', { title: 'Información sobre Reportes', user: req.session.user });
 });
 
+
+
 // ============================
 // 🐶 RUTAS RELACIONADAS CON PERROS
 // ============================
