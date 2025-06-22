@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title><%= title %></title>
+  <link rel="stylesheet" href="/styles/FormularioAdopciones.css" />
+</head>
+<body>
+  <header>
+    <h1>Formulario de Evaluación para Adopción - <%= perro.nombre %></h1>
+    <p>Tu compromiso y responsabilidad son fundamentales para el bienestar de <%= perro.nombre %>. Responde con sinceridad cada una de las siguientes preguntas.</p>
+  </header>
+
+  <nav>
+    <a href="/perros/<%= perro.id %>">← Regresar a detalles</a>
+  </nav>
+
+  <main>
+    <form action="/adoptar/<%= perro.id %>/enviar" method="POST">
+
+      <fieldset>
+        <legend>Entorno Familiar y de Vivienda</legend>
+
+        <label for="vivienda">Tipo de vivienda donde resides actualmente</label>
+        <select id="vivienda" name="vivienda" required>
+          <option value="" disabled selected>Selecciona una opción</option>
+          <option value="casa">Casa</option>
+          <option value="departamento">Departamento</option>
+          <option value="otro">Otro</option>
+        </select>
+
+        <label for="acuerdo_vivienda">¿Todos los integrantes de tu hogar están plenamente de acuerdo con la adopción?</label>
+        <select id="acuerdo_vivienda" name="acuerdo_vivienda" required>
+          <option value="" disabled selected>Selecciona una opción</option>
+          <option value="si">Sí</option>
+          <option value="no">No</option>
+        </select>
+      </fieldset>
+
+      <fieldset>
+        <legend>Experiencia y Conocimiento</legend>
+
+        <label for="mascotas_actuales">¿Actualmente convives con otras mascotas?</label>
+        <select id="mascotas_actuales" name="mascotas_actuales" required>
+          <option value="" disabled selected>Selecciona una opción</option>
+          <option value="si">Sí</option>
+          <option value="no">No</option>
+        </select>
+
+        <label for="experiencia">¿Has sido responsable del cuidado de otras mascotas anteriormente?</label>
+        <select id="experiencia" name="experiencia" required>
+          <option value="" disabled selected>Selecciona una opción</option>
+          <option value="si">Sí</option>
+          <option value="no">No</option>
+        </select>
+
+        <label for="conocimiento_cuidado">¿Consideras que tienes conocimientos suficientes sobre el cuidado de un perro?</label>
+        <select id="conocimiento_cuidado" name="conocimiento_cuidado" required>
+          <option value="" disabled selected>Selecciona una opción</option>
+          <option value="si">Sí</option>
+          <option value="no">No</option>
+        </select>
+      </fieldset>
+
+      <fieldset>
+        <legend>Motivación y Compromiso</legend>
+
+        <label for="motivo_adopcion">Explica detalladamente por qué deseas adoptar a <%= perro.nombre %></label>
+        <textarea id="motivo_adopcion" name="motivo_adopcion" rows="4" required></textarea>
+
+        <label for="tiempo">¿Cuánto tiempo diario puedes dedicar al cuidado, atención y ejercicio de <%= perro.nombre %>?</label>
+        <select id="tiempo" name="tiempo" required>
+          <option value="" disabled selected>Selecciona una opción</option>
+          <option value="menos_1_hora">Menos de 1 hora</option>
+          <option value="1_a_3_horas">Entre 1 y 3 horas</option>
+          <option value="mas_3_horas">Más de 3 horas</option>
+        </select>
+
+        <label for="actividad_fisica">¿Estás dispuesto a incluir en tu rutina diaria actividades físicas al aire libre con tu mascota?</label>
+        <select id="actividad_fisica" name="actividad_fisica" required>
+          <option value="" disabled selected>Selecciona una opción</option>
+          <option value="si">Sí</option>
+          <option value="no">No</option>
+        </select>
+
+        <label for="tiempo_compromiso">¿Estás comprometido a cuidar de <%= perro.nombre %> durante toda su vida, independientemente de circunstancias futuras?</label>
+        <select id="tiempo_compromiso" name="tiempo_compromiso" required>
+          <option value="" disabled selected>Selecciona una opción</option>
+          <option value="si">Sí</option>
+          <option value="no">No</option>
+        </select>
+      </fieldset>
+
+      <fieldset>
+        <legend>Responsabilidad Financiera</legend>
+
+        <label for="responsable_financiero">¿Puedes asumir de forma responsable los gastos veterinarios, alimenticios y de bienestar general de <%= perro.nombre %>?</label>
+        <select id="responsable_financiero" name="responsable_financiero" required>
+          <option value="" disabled selected>Selecciona una opción</option>
+          <option value="si">Sí</option>
+          <option value="no">No</option>
+        </select>
+      </fieldset>
+
+      <button type="submit">Enviar solicitud</button>
+    </form>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Albergue Segundas Oportunidades</p>
+  </footer>
+</body>
+</html>

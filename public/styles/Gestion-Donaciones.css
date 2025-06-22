@@ -1,0 +1,51 @@
+body {
+  font-family: Arial, sans-serif;
+  background: linear-gradient(to right, #F8BBD0, #F48FB1, #EC407A); /* Degradado rosa notorio */
+  color: #4a4a4a;
+  margin: 20px;
+}
+
+header h1 {
+  margin-bottom: 20px;
+  color: #AD1457; /* Rosa oscuro para encabezado */
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #fff;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+th, td {
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+  text-align: left;
+}
+
+th {
+  background: #F8BBD0; /* Rosa claro */
+  color: #2e2e2e;
+}
+
+tr:nth-child(even) {
+  background: #fce4ec; /* Rosa muy suave para filas pares */
+}
+
+/* Botón estilo rosa */
+a button {
+  padding: 10px 20px;
+  background-color: #EC407A; /* Rosa medio */
+  color: white;
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+a button:hover {
+  background-color: #D81B60; /* Rosa fuerte */
+  transform: scale(1.05);
+}

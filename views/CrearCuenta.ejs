@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Crear Cuenta</title>
+    <link rel="stylesheet" href="/styles/CrearCuenta.css" />
+</head>
+<body>
+    <div class="container">
+        <h2>Crear Cuenta</h2>
+
+        <!-- Mensajes de error -->
+        <% if (error) { %>
+            <p class="message error" role="alert"><%= error %></p>
+        <% } %>
+
+        <!-- Formulario de registro -->
+        <form action="/registro" method="POST" onsubmit="return validarFormularioRegistro()" autocomplete="off" novalidate>
+            <!-- Campo oculto para evitar autofill -->
+            <input type="text" name="fakeusernameremembered" style="display:none" />
+            
+            <div class="form-group">
+                <label for="nombre">Primer Nombre</label>
+                <input type="text" id="nombre" name="nombre" placeholder="Tu primer nombre" autocomplete="off" required />
+            </div>
+            <div class="form-group">
+                <label for="apellido_paterno">Apellido Paterno</label>
+                <input type="text" id="apellido_paterno" name="apellido_paterno" placeholder="Tu apellido paterno" autocomplete="off" required />
+            </div>
+            <div class="form-group">
+                <label for="apellido_materno">Apellido Materno</label>
+                <input type="text" id="apellido_materno" name="apellido_materno" placeholder="Tu apellido materno" autocomplete="off" required />
+            </div>
+            <div class="form-group">
+                <label for="calle">Calle</label>
+                <input type="text" id="calle" name="calle" placeholder="Nombre de la calle" autocomplete="off" required />
+            </div>
+            <div class="form-group">
+                <label for="colonia">Colonia</label>
+                <input type="text" id="colonia" name="colonia" placeholder="Colonia" autocomplete="off" required />
+            </div>
+            <div class="form-group">
+                <label for="ciudad">Ciudad</label>
+                <input type="text" id="ciudad" name="ciudad" placeholder="Ciudad" autocomplete="off" required />
+            </div>
+            <div class="form-group">
+                <label for="codigo_postal">Código Postal</label>
+                <input type="text" id="codigo_postal" name="codigo_postal" placeholder="Código postal" autocomplete="off" required />
+            </div>
+            <div class="form-group">
+                <label for="telefono">Teléfono</label>
+                <input type="text" id="telefono" name="telefono" placeholder="Tu teléfono" autocomplete="off" required />
+            </div>
+            <div class="form-group">
+                <label for="correo">Correo</label>
+                <input type="email" id="correo" name="correo" placeholder="Tu correo electrónico" autocomplete="new-email" required />
+            </div>
+            <div class="form-group">
+                <label for="password">Contraseña</label>
+                <input type="password" id="password" name="password" placeholder="Tu contraseña" autocomplete="new-password" required />
+            </div>
+
+            <div class="form-actions">
+                <button type="submit" class="btn">Registrar</button>
+                <button type="button" class="btn secondary" onclick="window.location.href='/login'">Volver</button>
+            </div>
+        </form>
+    </div>
+
+    <!-- Script de validación -->
+    <script>
+        function validarFormularioRegistro() {
+            const camposRequeridos = [
+                'nombre', 'apellido_paterno', 'apellido_materno',
+                'calle', 'colonia', 'ciudad', 'codigo_postal',
+                'telefono', 'correo', 'password'
+            ];
+            for (const id of camposRequeridos) {
+                const valor = document.getElementById(id).value.trim();
+                if (!valor) {
+                    alert('Por favor, completa todos los campos requeridos.');
+                    return false;
+                }
+            }
+
+            const correoRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            const correo = document.getElementById('correo').value.trim();
+            if (!correoRegex.test(correo)) {
+                alert('Por favor, introduce un correo válido.');
+                return false;
+            }
+
+            const telefonoRegex = /^\d{8,}$/;
+            const telefono = document.getElementById('telefono').value.trim();
+            if (!telefonoRegex.test(telefono)) {
+                alert('Por favor, introduce un número de teléfono válido (mínimo 8 dígitos).');
+                return false;
+            }
+
+            return true;
+        }
+
+        // Limpia todos los campos al cargar la página
+        window.addEventListener('load', () => {
+            const inputs = document.querySelectorAll('input');
+            inputs.forEach(input => {
+                if (input.type === 'checkbox' || input.type === 'radio') {
+                    input.checked = false;
+                } else {
+                    input.value = '';
+                }
+            });
+        });
+    </script>
+</body>
+</html>

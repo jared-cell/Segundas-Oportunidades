@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nuevo ingreso</title>
+    <link rel="stylesheet" href="public/styles/Gestion-Perros.css">
+    <script>
+        function redirigirAlAdmin(event) {
+            event.preventDefault(); // Previene el envío real del formulario
+            window.location.href = "admin.html"; // Cambia esto por la ruta correcta
+        }
+    </script>
+</head>
+<body>
+    <div class="formulario">
+        <h2>Nuevo ingreso</h2>
+        <form onsubmit="redirigirAlAdmin(event)">
+            <label>Nombre del perrito:</label>
+            <input type="text" name="nombre" required>
+
+            <label>Raza del perro:</label>
+            <input type="text" name="raza" required>
+
+            <label>Tipo de raza (grande, pequeña, mediana):</label>
+            <input type="text" name="tipo-raza" required>
+
+            <label>Fecha de llegada:</label>
+            <input type="date" name="fecha" required>
+
+            <label>Historia:</label>
+            <textarea name="historia" rows="5" required></textarea>
+
+            <button type="submit">Guardar</button>
+        </form>
+    </div>
+</body>
+</html>

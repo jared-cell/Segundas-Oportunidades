@@ -1,0 +1,51 @@
+body {
+  font-family: Arial, sans-serif;
+  background: linear-gradient(to right, #BBDEFB, #64B5F6, #2196F3); /* Degradado azul notorio */
+  color: #333;
+  margin: 20px;
+}
+
+header h1 {
+  margin-bottom: 20px;
+  color: #3E4C9A; /* Azul oscuro para el título */
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #fff;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+th, td {
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+  text-align: left;
+}
+
+th {
+  background: #BBDEFB; /* Azul claro */
+  color: #2e2e2e;
+}
+
+tr:nth-child(even) {
+  background: #E3F2FD; /* Azul muy suave para filas pares */
+}
+
+/* Estilo del botón de volver al panel */
+a button {
+  padding: 10px 20px;
+  background-color: #64B5F6; /* Azul medio */
+  color: white;
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+a button:hover {
+  background-color: #42A5F5; /* Azul un poco más intenso */
+  transform: scale(1.05);
+}

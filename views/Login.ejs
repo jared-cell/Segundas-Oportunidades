@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Iniciar Sesión</title>
+    <link rel="stylesheet" href="/styles/LoginUsuario.css" />
+</head>
+<body>
+    <div class="container">
+        <h2>Iniciar Sesión</h2>
+
+        <!-- Mensajes de error o éxito -->
+        <% if (error) { %>
+            <p class="message error" role="alert"><%= error %></p>
+        <% } %>
+        <% if (success) { %>
+            <p class="message success" role="status"><%= success %></p>
+        <% } %>
+
+        <!-- Formulario de login -->
+        <form id="loginForm" action="/login" method="POST" onsubmit="return validarFormulario()" autocomplete="off" novalidate>
+            <!-- Campo oculto para evitar autofill -->
+            <input type="text" name="fakeusernameremembered" style="display:none" />
+            <div class="form-group">
+                <label for="identificador">Correo o Nombre de Usuario</label>
+                <input
+                    type="text"
+                    id="identificador"
+                    name="identificador"
+                    placeholder="Introduce tu correo "
+                    autocomplete="new-username"
+                    required
+                />
+            </div>
+            <div class="form-group">
+                <label for="password">Contraseña</label>
+                <input
+                    type="password"
+                    id="password"
+                    name="password"
+                    placeholder="Introduce tu contraseña"
+                    autocomplete="new-password"
+                    required
+                />
+            </div>
+            <button type="submit" class="btn">Entrar</button>
+        </form>
+
+        <!-- Enlace para registro -->
+        <p class="register-link">
+            ¿No tienes cuenta? <a href="/registro">Crear cuenta</a>
+        </p>
+    </div>
+
+    <!-- Script de validación -->
+    <script>
+        function validarFormulario() {
+            const identificador = document.getElementById('identificador').value.trim();
+            const password = document.getElementById('password').value.trim();
+
+            if (!identificador || !password) {
+                alert('Por favor, completa todos los campos.');
+                return false;
+            }
+            return true;
+        }
+
+        // Limpiar inputs al cargar
+        window.addEventListener('load', () => {
+            document.getElementById('identificador').value = '';
+            document.getElementById('password').value = '';
+        });
+    </script>
+</body>
+</html>

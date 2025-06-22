@@ -1,0 +1,59 @@
+/* admin.css */
+
+body {
+  margin: 0;
+  font-family: 'Arial', sans-serif;
+  background: linear-gradient(to right, #FADADD, #D9B8FF);
+  color: #2d2a4c;
+}
+
+header {
+  background-color: #A084E8;
+  color: white;
+  padding: 20px 0;
+  text-align: center;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  margin-top: 50px;
+}
+
+.panel {
+  background: #FFFFFF;
+  border-radius: 12px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  width: 320px;
+  text-align: center;
+}
+
+.panel a {
+  text-decoration: none;
+  background-color: #E0BBE4;
+  padding: 12px 20px;
+  border-radius: 6px;
+  color: #4B4453;
+  font-weight: 600;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.panel a:hover {
+  background-color: #D291BC;
+  color: #fff;
+}
+
+@media (max-width: 600px) {
+  .container {
+    margin-top: 20px;
+  }
+
+  .panel {
+    width: 90%;
+  }
+}

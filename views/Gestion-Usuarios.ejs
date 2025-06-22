@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Gestión de Usuarios</title>
+  <link rel="stylesheet" href="/styles/GestionUsuarios.css" />
+  <script>
+    function buscarUsuarios() {
+      const id = document.getElementById('buscarId').value;
+      const nombre = document.getElementById('buscarNombre').value;
+      const ciudad = document.getElementById('buscarCiudad').value;
+
+      console.log(`Buscar por ID: ${id}, Nombre: ${nombre}, Ciudad: ${ciudad}`);
+    }
+
+    function confirmarAccion(mensaje) {
+      return confirm(mensaje);
+    }
+  </script>
+</head>
+<body>
+  <header>
+    <h1>🧑‍🤝‍🧑 Gestión de Usuarios</h1>
+  </header>
+
+  <nav class="menu-container">
+    <a href="/menu" class="btn">← Volver al Menú Principal</a>
+  </nav>
+
+  <main class="gestion-container">
+    <section class="tabla-usuarios">
+      <h2>Listado de Usuarios</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Nombre</th>
+            <th>Correo</th>
+            <th>Teléfono</th>
+            <th>Ciudad</th>
+            <th>Estado</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% if (usuarios && usuarios.length > 0) { %>
+            <% usuarios.forEach(usuario => { %>
+              <tr>
+                <td><%= usuario.id %></td>
+                <td><%= usuario.nombre %></td>
+                <td><%= usuario.correo %></td>
+                <td><%= usuario.telefono %></td>
+                <td><%= usuario.direccion?.ciudad || '' %></td>
+                <td><%= usuario.activo ? 'Activo' : 'Inactivo' %></td>
+                <td>
+                  <button 
+                    class="btn editar" 
+                    onclick="location.href='/usuarios/<%= usuario.id %>/editar'">
+                    Editar
+                  </button>
+
+                  <% const accionTexto = usuario.activo ? '¿Desactivar este usuario?' : '¿Activar este usuario?'; %>
+                  <form action="/usuarios/<%= usuario.id %>/estado" method="POST" style="display:inline;">
+                    <input type="hidden" name="activo" value="<%= !usuario.activo %>" />
+                    <button 
+                      type="submit" 
+                      class="btn <%= usuario.activo ? 'desactivar' : 'activar' %>" 
+                      onclick="return confirmarAccion('<%= accionTexto %>');">
+                      <%= usuario.activo ? 'Desactivar' : 'Activar' %>
+                    </button>
+                  </form>
+                </td>
+              </tr>
+            <% }); %>
+          <% } else { %>
+            <tr>
+              <td colspan="7">No se encontraron usuarios</td>
+            </tr>
+          <% } %>
+        </tbody>
+      </table>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Albergue Segundas Oportunidades</p>
+  </footer>
+</body>
+</html>

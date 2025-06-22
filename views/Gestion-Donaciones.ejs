@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8"/>
+  <title>Usuarios registrados</title>
+  <link rel="stylesheet" href="public/styles/Gestion-Donaciones.css"/>
+</head>
+<body>
+  <header>
+    <h1>Usuarios del sistema</h1>
+  </header>
+  <main>
+    <table id="usuarios-table">
+      <thead>
+        <tr>
+          <th>ID</th><th>Nombre</th><th>Correo</th><th>Teléfono</th><th>Rol</th>
+        </tr>
+      </thead>
+      <tbody>
+      </tbody>
+    </table>
+
+    <div style="text-align: center; margin-top: 20px;">
+      <a href="admin.html">
+        <button>⬅ Volver al Panel</button>
+      </a>
+    </div>
+  </main>
+  <script>
+    async function cargar() {
+      const res = await fetch('/api/usuarios');
+      const us = await res.json();
+      const tbody = document.querySelector('#usuarios-table tbody');
+      us.forEach(u => {
+        const tr = document.createElement('tr');
+        tr.innerHTML = `
+          <td>${u.id}</td>
+          <td>${u.nombre}</td>
+          <td>${u.correo}</td>
+          <td>${u.telefono}</td>
+          <td>${u.rol || 'usuario'}</td>
+        `;
+        tbody.appendChild(tr);
+      });
+    }
+    window.onload = cargar;
+  </script>
+</body>
+</html>

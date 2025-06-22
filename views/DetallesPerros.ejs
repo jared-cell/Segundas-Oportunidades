@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title><%= title %></title>
+  <link rel="stylesheet" href="/styles/DetallesPerros.css" />
+  <script>
+    function confirmarAdopcion(nombre) {
+      return confirm(`¿Estás seguro de que deseas iniciar el proceso de adopción para ${nombre}?`);
+    }
+  </script>
+</head>
+<body>
+  <header>
+    <h1>🐶 Detalles de <%= perro.nombre %></h1>
+  </header>
+
+  <!-- Botones de navegación -->
+  <nav class="botones-container">
+    <a href="/menu" class="btn btn-regresar">
+      <span>←</span> Menú Principal
+    </a>
+    <a href="/perros" class="btn btn-perros">
+      <span>🐾</span> Lista de Perros
+    </a>
+  </nav>
+
+  <!-- Detalles del perro -->
+  <main class="detalle-container">
+    <article class="card">
+      <img src="/imagenes/<%= perro.imagen %>" alt="Foto de <%= perro.nombre %>" />
+      <h2><%= perro.nombre %></h2>
+      <p><strong>🐕 Raza:</strong> <%= perro.raza %></p>
+      <p><strong>🎂 Edad:</strong> <%= perro.edad %> años</p>
+      <p><strong>📝 Descripción:</strong> <%= perro.descripcion %></p>
+      <p><strong>📌 Estado:</strong> <%= perro.estado %></p>
+    </article>
+
+    <!-- Sección de adopción -->
+    <section class="formulario-adopcion">
+      <h3>¿Estás listo para adoptar?</h3>
+      <p>Este proceso nos permite conocer tu compromiso y asegurarnos de que <strong><%= perro.nombre %></strong> encontrará un hogar responsable y amoroso.</p>
+      <form action="/adoptar/<%= perro.id %>" method="GET" onsubmit="return confirmarAdopcion('<%= perro.nombre %>')">
+        <button type="submit" class="btn btn-adoptar">
+          🐶 Enviar Solicitud de Adopción
+        </button>
+      </form>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2025 Albergue Segundas Oportunidades — Todos los derechos reservados</p>
+  </footer>
+</body>
+</html>
